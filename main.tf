@@ -12,20 +12,16 @@ module "vpc" {
 
 module "linux_instance" {
   source = "./modules/linux"
-   # name                 = "my-ec2-cluster-${count.index}"
-    # subnet_id = module.vpc.public_subnet_ids[0]
   depends_on = [ module.vpc ]
 }
 
 
-# module "linux_instance" {
-#   source            = "./modules/linux"  # Adjust the path accordingly
-#   region            = var.aws_region
-#   ec2_count         = var.ec2_count
-#   ec2_ami           = var.ec2_ami
-#   ec2_instance_type = var.ec2_instance_type
-#   subnet_id         = module.vpc.public_subnet_ids[0] # Use the first public subnet
-# }
+module "windows_instance" {
+  source               = "./modules/windows"
+  windows_ami          = "ami-057e9b22dd2a06f68"
+  depends_on = [ module.vpc ]
+  
+}
 
 
 
