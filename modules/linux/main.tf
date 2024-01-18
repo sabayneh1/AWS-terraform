@@ -18,7 +18,7 @@ resource "aws_instance" "this" {
   vpc_security_group_ids = [module.vpc.security_group_id]
   subnet_id            = module.vpc.public_subnet_ids[0]
   tags = {
-    Name       = "my-ec2-cluster-${count.index}"
+    Name       = "linux-ec2-cluster-${count.index}"
     Terraform   = "true"
     Environment = "dev"
   }

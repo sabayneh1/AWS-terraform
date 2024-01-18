@@ -16,9 +16,10 @@ resource "aws_instance" "this" {
   ami                  = var.windows_ami
   instance_type        = var.windows_instance_type
   subnet_id            = module.vpc.public_subnet_ids[0]  # Use the first public subnet
-  # vpc_security_group_ids = [module.vpc.default_security_group_id]
+ vpc_security_group_ids = [module.vpc.windows_security_group_id]
 
   tags = {
+    Name       = "windows-ec2-cluster-${count.index}"
     Terraform   = "true"
     Environment = "dev"
   }

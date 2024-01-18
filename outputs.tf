@@ -47,3 +47,19 @@ output "ec2_public_dns" {
   value = module.linux_instance.ec2_public_dns
   description = "Public DNS names of the EC2 instances."
 }
+
+
+output "windows_instance_ids" {
+  value       = module.windows_instance.windows_instance_ids
+  description = "IDs of the created Windows instances."
+}
+
+output "windows_instance_dns" {
+  value       = module.windows_instance.windows_instance_dns
+  description = "Public DNS names of the Windows instances."
+}
+
+output "windows_instance_public_ips" {
+  value       = module.windows_instance.windows_instance_public_ips
+  description = "Public IP addresses of the Windows instances."
+}
