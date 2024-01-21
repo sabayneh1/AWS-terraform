@@ -14,3 +14,8 @@ output "ec2_public_dns" {
   value = [for instance in aws_instance.this : instance.public_dns]
   description = "Public DNS names of the EC2 instances."
 }
+
+
+output "ec2_count" {
+  value = var.ec2_count
+}

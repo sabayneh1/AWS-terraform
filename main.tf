@@ -12,19 +12,22 @@ module "vpc" {
 
 module "linux_instance" {
   source = "./modules/linux"
-  depends_on = [ module.vpc ]
+  depends_on = [module.vpc]
+
 }
+
 
 
 module "windows_instance" {
-  source               = "./modules/windows"
-  windows_ami          = "ami-057e9b22dd2a06f68"
-  depends_on = [ module.vpc ]
-  
+  source      = "./modules/windows"
+  windows_ami = "ami-057e9b22dd2a06f68"
+  depends_on  = [module.vpc]
+
 }
 
-
-
+module "SSM_Parameteter" {
+  source = "./modules/SSMparameter"
+}
 
 
 

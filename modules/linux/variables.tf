@@ -20,3 +20,21 @@ variable "tags" {
     Environment = "dev"
   }
 }
+
+
+# variable "role_name" {
+#   description = "The name of the IAM role"
+#   type        = string
+# }
+
+# variable "assume_role_policy" {
+#   description = "The assume role policy"
+#   type        = string
+# }
+
+
+# variable "create_iam_role" {
+#   description = "Flag to determine if IAM role and policy should be created"
+#   type        = bool
+#   default     = true  # Set to true to create the IAM role and policy
+# }

@@ -44,7 +44,7 @@ output "ec2_private_ip_addresses" {
 }
 
 output "ec2_public_dns" {
-  value = module.linux_instance.ec2_public_dns
+  value       = module.linux_instance.ec2_public_dns
   description = "Public DNS names of the EC2 instances."
 }
 
