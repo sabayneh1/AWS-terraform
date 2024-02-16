@@ -1,55 +1,85 @@
-# Terraform AWS Infrastructure
+# **AWS Infrastructure Automation with Terraform**
 
-This Terraform project deploys a simple AWS infrastructure, including a Virtual Private Cloud (VPC) and Linux instances.
+## **Project Overview**
 
-## Prerequisites
+This Terraform project automates the deployment of a scalable and secure cloud infrastructure on AWS. It includes the creation of a VPC, Linux and Windows instances, IAM roles and policies for enhanced security, and well-defined security groups for network protection.
 
-Before you begin, ensure you have the following installed:
+## **Features**
 
-- [Terraform](https://www.terraform.io/downloads.html)
-- [AWS CLI](https://aws.amazon.com/cli/)
+- **VPC Creation**: Configures a Virtual Private Cloud (VPC) with public subnets across multiple availability zones for high availability.
+- **Linux and Windows Instances**: Automates the deployment of both Linux and Windows instances within the created VPC.
+- **IAM Roles and Policies**: Sets up IAM roles and policies for EC2 instances to securely access AWS services.
+- **Security Groups**: Defines security groups to manage inbound and outbound traffic for instances, ensuring a secure networking environment.
 
-Make sure to configure your AWS credentials using `aws configure`.
+## **Prerequisites**
 
-## Usage
+- AWS CLI installed and configured
+- Terraform v0.12+ installed
 
-### 1. Clone the Repository
+## **Setup Instructions**
 
-```bash
+### **Step 1: Clone the Repository**
+
+Clone this repository to your local machine to get started with the Terraform configurations.
+
+```
 git clone https://github.com/sabayneh1/AWS-terraform.git
-cd <repository_directory>
 
-2. Initialize Terraform
+```
 
-3. Adjust Variables
-Review and adjust the variables in terraform.tfvars and modules/linux/variables.tf as needed.
+### **Step 2: Initialize Terraform**
 
-4. Deploy Infrastructure
+Navigate to the project directory and initialize Terraform to download necessary providers and modules.
 
+```
+cd <project-directory>
+terraform init
+
+```
+
+### **Step 3: Create a Terraform Plan**
+
+Generate a Terraform execution plan to preview the changes that Terraform will make to your AWS infrastructure.
+
+```
+terraform plan
+```
+
+### **Step 4: Apply the Terraform Configuration**
+
+Apply the Terraform configuration to create the resources on AWS as defined in the project.
+
+```
 terraform apply
+```
 
-5. Clean Up
-To destroy the infrastructure when done:
+Confirm the action by typing **`yes`** when prompted.
 
+### **Step 5: Access the Instances**
+
+Once the deployment is complete, you can access the Linux and Windows instances using their public IP addresses. For Windows instances, RDP into the instance using the provided administrator credentials. For Linux instances, SSH into the instance using the key pair specified during the setup.
+
+## **IAM Roles and Policies**
+
+The project configures IAM roles and policies to grant the EC2 instances minimal access necessary to perform their functions. These roles are associated with the instances during the deployment.
+
+## **Security Groups**
+
+Security groups are defined to allow traffic on specific ports:
+
+- **Linux Instances**: SSH (Port 22), HTTP (Port 80), HTTPS (Port 443)
+- **Windows Instances**: RDP (Port 3389), HTTP (Port 80), HTTPS (Port 443)
+
+Adjust the security group rules as per your project requirements for tighter security.
+
+## **Cleanup**
+
+To destroy the resources created by Terraform and prevent further charges, run the following command:
+
+```
 terraform destroy
-Save to grepper
-Project Structure
-The project is organized into the following directories:
+```
 
-main.tf: Defines the main infrastructure using the VPC and Linux instance modules.
-terraform.tfvars: Variables file with configuration values.
-modules/vpc: Module for creating the AWS VPC.
-main.tf: VPC resource definitions.
-variables.tf: Input variables for the VPC module.
-outputs.tf: Output values from the VPC module.
-modules/linux: Module for creating Linux instances.
-main.tf: Linux instance resource definitions.
-variables.tf: Input variables for the Linux module.
-outputs.tf: Output values from the Linux module.
-Outputs
-vpc_id: ID of the VPC.
-public_subnet_ids: IDs of the public subnets.
-private_subnet_ids: IDs of the private subnets.
-ec2_public_ips: Public IP addresses of the EC2 instances.
-ec2_public_dns: Public DNS names of the EC2 instances.
-ec2_private_ips: Private IP addresses of the EC2 instances
+## **Contributing**
+
+Contributions to improve the configurations or add new features are welcome. Please follow the standard pull request process.
